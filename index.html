@@ -1,0 +1,2949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiran Jothi - Engineering Student | CDS Aspirant | Tech Enthusiast</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light Theme Colors */
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --gradient-1: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --gradient-2: linear-gradient(135deg, #f72585, #b5179e);
+            --gradient-3: linear-gradient(135deg, #4cc9f0, #4361ee);
+            --gradient-ncc: linear-gradient(135deg, #006400, #228B22);
+            --gradient-marathon: linear-gradient(135deg, #FF6B35, #F08A5D);
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #1e1e2f;
+            --text-secondary: #4a4a6a;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: #1e1e2f;
+            --footer-text: #ffffff;
+            
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e2f;
+            --bg-card: rgba(30, 30, 47, 0.9);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --border-color: #2d2d40;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --card-bg: #2d2d40;
+            
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --footer-bg: #0a0a14;
+            --footer-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+            75% { transform: translateY(20px) translateX(5px); }
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Profile Photo in Navigation */
+        .nav-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .nav-profile:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-profile .default-profile {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== PHOTO UPLOAD MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px var(--shadow-color);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--primary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .upload-area p {
+            margin-bottom: 0;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .modal-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--text-primary);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ===== SECTION PHOTO UPLOAD BUTTON ===== */
+        .section-photo-upload {
+            position: relative;
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+
+        .upload-section-btn {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        /* ===== PHOTO GALLERY ===== */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .delete-photo {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 0, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-item:hover .delete-photo {
+            opacity: 1;
+        }
+
+        /* ===== NCC & MARATHON SECTION ===== */
+        .ncc-marathon {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .activities-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            border: none;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .tab-btn.ncc.active {
+            background: var(--gradient-ncc);
+        }
+
+        .tab-btn.marathon.active {
+            background: var(--gradient-marathon);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .activity-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .activity-stat-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+
+        .activity-stat-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .activity-stat-card .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .activity-timeline {
+            margin: 3rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease;
+        }
+
+        .hero-greeting {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(247, 37, 133, 0.1), rgba(181, 23, 158, 0.1));
+            border-radius: 50px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tag {
+            padding: 0.5rem 1.5rem;
+            background: var(--bg-card);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInRight 1s ease;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 20px 20px 40px var(--shadow-color);
+            animation: morphing 10s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px var(--shadow-color);
+        }
+
+        .profile-img.default {
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        @keyframes morphing {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: 20px;
+            right: -20px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            animation: float 3s infinite;
+        }
+
+        .floating-badge i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .upload-photo-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .upload-photo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-item i {
+            font-size: 2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            width: 100%;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--bg-secondary);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 5px;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: fillBar 1.5s ease forwards;
+        }
+
+        @keyframes fillBar {
+            to { transform: scaleX(1); }
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px var(--shadow-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 30px 30px 60px var(--shadow-color);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2));
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .project-card:hover .project-image::before {
+            transform: translateX(100%);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 1rem;
+            background: var(--gradient-3);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        .project-photo-gallery {
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        /* ===== FITNESS SECTION ===== */
+        .fitness {
+            background: var(--bg-secondary);
+        }
+
+        .fitness-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .fitness-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .fitness-card:hover {
+            transform: scale(1.05);
+        }
+
+        .fitness-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1rem 0;
+        }
+
+        .fitness-photo-gallery {
+            margin-top: 2rem;
+        }
+
+        /* ===== EDUCATION SECTION ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--gradient-1);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 50px);
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        /* ===== ACHIEVEMENTS SECTION ===== */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px var(--shadow-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 1rem;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus ~ label,
+        .form-group textarea:focus ~ label,
+        .form-group input:valid ~ label,
+        .form-group textarea:valid ~ label {
+            top: -20px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--primary-color);
+            outline: none;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            height: 300px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--gradient-1);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ===== SCROLL TO TOP BUTTON ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-tags {
+                justify-content: center;
+            }
+
+            .image-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-left: 80px !important;
+            }
+
+            .activities-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--nav-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-profile {
+                margin: 1rem 0 0 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-date {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="animated-bg" id="particles"></div>
+
+    <!-- Photo Upload Modal -->
+    <div class="modal" id="photoModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <h3 id="modalTitle">Upload Photo</h3>
+            <p id="modalSubtitle">Choose a photo to add to this section</p>
+            
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload or drag and drop</p>
+                <p style="font-size: 0.8rem;">PNG, JPG, JPEG up to 5MB</p>
+                <input type="file" class="file-input" id="fileInput" accept="image/*">
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="modal-btn primary" id="savePhoto">Save Photo</button>
+                <button class="modal-btn secondary" id="cancelPhoto">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">KJ</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#fitness" class="nav-link">Fitness</a></li>
+                <li><a href="#ncc-marathon" class="nav-link">NCC & Marathon</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                
+                <!-- Profile Photo in Navigation -->
+                <li class="nav-profile" id="navProfilePhoto">
+                    <div class="default-profile" id="navDefaultProfile">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <img id="navProfileImg" src="#" alt="Profile" style="display: none;">
+                </li>
+            </ul>
+            
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-greeting">Welcome to my portfolio</span>
+                    <h1 class="hero-title">Hi, I'm <span>Kiran Jothi</span></h1>
+                    <h2 class="hero-subtitle">Engineering Student | CDS Aspirant | Tech Enthusiast</h2>
+                    
+                    <div class="hero-tags">
+                        <span class="hero-tag"><i class="fas fa-map-marker-alt"></i> India</span>
+                        <span class="hero-tag"><i class="fas fa-running"></i> Runner</span>
+                        <span class="hero-tag"><i class="fas fa-leaf"></i> Yoga</span>
+                        <span class="hero-tag"><i class="fas fa-microchip"></i> IoT</span>
+                        <span class="hero-tag"><i class="fas fa-shield-alt"></i> NCC</span>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Dedication</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <div class="profile-img default" id="heroProfileImg">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <img id="heroUploadedImg" src="#" alt="Profile" style="display: none;" class="profile-img">
+                        <button class="upload-photo-btn" id="uploadPhotoBtn">
+                            <i class="fas fa-camera"></i> Upload Photo
+                        </button>
+                        <div class="floating-badge">
+                            <i class="fas fa-medal"></i>
+                            <span>CDS Aspirant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">About Me</span>
+                <h2 class="section-title">Who is <span>Kiran Jothi?</span></h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p>I am an ambitious engineering student with a strong passion for technology and a dream to serve my nation through the defence forces. My journey combines technical excellence with physical discipline, preparing myself for the challenges of the CDS examination and beyond.</p>
+                    
+                    <p>With a deep interest in IoT and embedded systems, I love creating innovative solutions that make a difference. My technical skills are complemented by my dedication to fitness through running and yoga, building the mental and physical strength required for a career in defence services.</p>
+                    
+                    <p>I believe in the power of discipline, continuous learning, and serving something greater than oneself. Whether it's coding a new IoT project or training for a marathon, I give my 100% to everything I do.</p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <h4>Tech Enthusiast</h4>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>CDS Aspirant</h4>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-heartbeat"></i>
+                            <h4>Fitness</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text reveal">
+                    <h3>Quick Facts</h3>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Engineering Student (Current)</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> CDS Examination Preparation</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> IoT & Embedded Systems Enthusiast</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Marathon Runner (2 completed)</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Daily Yoga Practitioner</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> NCC Cadet (3+ Years)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- About Section Photo Gallery -->
+            <div class="section-photo-upload">
+                <button class="upload-section-btn" data-section="about">
+                    <i class="fas fa-camera"></i> Add Photos
+                </button>
+            </div>
+            <div class="photo-gallery" id="aboutGallery"></div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">My Skills</span>
+                <h2 class="section-title">Technical & <span>Personal</span></h2>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Technical Skills -->
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-microchip"></i> Technical Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python Programming</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>IoT Systems</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Arduino/ESP32</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Electronics Basics</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Problem Solving</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Academic Skills -->
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-graduation-cap"></i> Academic Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Mathematics</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Logical Reasoning</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Engineering Fundamentals</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Personal Skills -->
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-user-check"></i> Personal Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Discipline</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Leadership</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Teamwork</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Time Management</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Section Photo Gallery -->
+            <div class="section-photo-upload">
+                <button class="upload-section-btn" data-section="skills">
+                    <i class="fas fa-camera"></i> Add Photos
+                </button>
+            </div>
+            <div class="photo-gallery" id="skillsGallery"></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">My Work</span>
+                <h2 class="section-title">Featured <span>Projects</span></h2>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <div class="project-image" id="project1Image">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-Time Utility Meter Monitoring System</h3>
+                        <p>IoT-based system for real-time monitoring of utility meters with data analytics and alerts.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Sensors</span>
+                        </div>
+                        <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="project-photo-gallery">
+                            <div class="section-photo-upload">
+                                <button class="upload-section-btn" data-section="project1">
+                                    <i class="fas fa-camera"></i> Add Project Photos
+                                </button>
+                            </div>
+                            <div class="photo-gallery" id="project1Gallery"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card reveal">
+                    <div class="project-image" id="project2Image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Arduino-based Home Automation</h3>
+                        <p>Smart home automation system with voice control and mobile app integration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">Bluetooth</span>
+                            <span class="tech-tag">C++</span>
+                        </div>
+                        <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="project-photo-gallery">
+                            <div class="section-photo-upload">
+                                <button class="upload-section-btn" data-section="project2">
+                                    <i class="fas fa-camera"></i> Add Project Photos
+                                </button>
+                            </div>
+                            <div class="photo-gallery" id="project2Gallery"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card reveal">
+                    <div class="project-image" id="project3Image">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Weather Monitoring Station</h3>
+                        <p>Wireless weather monitoring system with real-time data visualization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">Sensors</span>
+                            <span class="tech-tag">Cloud</span>
+                        </div>
+                        <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="project-photo-gallery">
+                            <div class="section-photo-upload">
+                                <button class="upload-section-btn" data-section="project3">
+                                    <i class="fas fa-camera"></i> Add Project Photos
+                                </button>
+                            </div>
+                            <div class="photo-gallery" id="project3Gallery"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card reveal">
+                    <div class="project-image" id="project4Image">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Energy Meter</h3>
+                        <p>IoT-enabled energy meter with consumption tracking and optimization suggestions.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                        <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        
+                        <div class="project-photo-gallery">
+                            <div class="section-photo-upload">
+                                <button class="upload-section-btn" data-section="project4">
+                                    <i class="fas fa-camera"></i> Add Project Photos
+                                </button>
+                            </div>
+                            <div class="photo-gallery" id="project4Gallery"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitness Section -->
+    <section id="fitness" class="fitness">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Fitness & Activities</span>
+                <h2 class="section-title">Mind & Body <span>Discipline</span></h2>
+            </div>
+            
+            <div class="fitness-grid">
+                <div class="fitness-card reveal">
+                    <div class="fitness-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Running</h3>
+                    <div class="counter" data-target="1000">0</div>
+                    <p>Kilometers Run</p>
+                    <span>Including 2 marathons</span>
+                </div>
+                
+                <div class="fitness-card reveal">
+                    <div class="fitness-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Yoga</h3>
+                    <div class="counter" data-target="365">0</div>
+                    <p>Days of Practice</p>
+                    <span>Daily morning routine</span>
+                </div>
+                
+                <div class="fitness-card reveal">
+                    <div class="fitness-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Fitness</h3>
+                    <div class="counter" data-target="5">0</div>
+                    <p>Years Active</p>
+                    <span>Consistent training</span>
+                </div>
+                
+                <div class="fitness-card reveal">
+                    <div class="fitness-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>NCC Activities</h3>
+                    <div class="counter" data-target="3">0</div>
+                    <p>Years Participation</p>
+                    <span>Leadership camps</span>
+                </div>
+            </div>
+            
+            <!-- Fitness Section Photo Gallery -->
+            <div class="section-photo-upload">
+                <button class="upload-section-btn" data-section="fitness">
+                    <i class="fas fa-camera"></i> Add Fitness Photos
+                </button>
+            </div>
+            <div class="fitness-photo-gallery">
+                <div class="photo-gallery" id="fitnessGallery"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NCC & Marathon Section -->
+    <section id="ncc-marathon" class="ncc-marathon">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">NCC & Marathon</span>
+                <h2 class="section-title">Service & <span>Endurance</span></h2>
+            </div>
+            
+            <div class="activities-tabs">
+                <button class="tab-btn ncc active" data-tab="ncc">
+                    <i class="fas fa-shield-alt"></i> NCC Activities
+                </button>
+                <button class="tab-btn marathon" data-tab="marathon">
+                    <i class="fas fa-running"></i> Marathon Events
+                </button>
+            </div>
+            
+            <!-- NCC Tab Content -->
+            <div class="tab-content active" id="nccTab">
+                <div class="activity-stats">
+                    <div class="activity-stat-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="stat-number">3+</div>
+                        <p>Years in NCC</p>
+                    </div>
+                    <div class="activity-stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <div class="stat-number">5</div>
+                        <p>Camps Attended</p>
+                    </div>
+                    <div class="activity-stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-number">500+</div>
+                        <p>Hours of Service</p>
+                    </div>
+                    <div class="activity-stat-card">
+                        <i class="fas fa-medal"></i>
+                        <div class="stat-number">3</div>
+                        <p>Achievements</p>
+                    </div>
+                </div>
+                
+                <div class="activity-timeline">
+                    <h3 style="margin-bottom: 2rem;">NCC Journey</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h4>Annual Training Camp</h4>
+                            <p>Participated in 10-day annual training camp with 500+ cadets. Excelled in drill, weapon training, and leadership exercises.</p>
+                            <span class="achievement-badge">Best Cadet Award</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h4>NIC (National Integration Camp)</h4>
+                            <p>Represented state in National Integration Camp. Interacted with cadets from across India and participated in cultural exchange.</p>
+                            <span class="achievement-badge">Cultural Secretary</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-content">
+                            <h4>Basic Leadership Camp</h4>
+                            <p>Selected for basic leadership course. Developed team management and decision-making skills.</p>
+                            <span class="achievement-badge">Leadership Award</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-content">
+                            <h4>NCC Enrollment</h4>
+                            <p>Joined NCC with dream of serving the nation. Started journey with basic training and discipline.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- NCC Photos -->
+                <div class="section-photo-upload">
+                    <button class="upload-section-btn" data-section="ncc">
+                        <i class="fas fa-camera"></i> Add NCC Photos
+                    </button>
+                </div>
+                <div class="photo-gallery" id="nccGallery"></div>
+            </div>
+            
+            <!-- Marathon Tab Content -->
+            <div class="tab-content" id="marathonTab">
+                <div class="activity-stats">
+                    <div class="activity-stat-card">
+                        <i class="fas fa-running"></i>
+                        <div class="stat-number">2</div>
+                        <p>Marathons</p>
+                    </div>
+                    <div class="activity-stat-card">
+                        <i class="fas fa-road"></i>
+                        <div class="stat-number">42</div>
+                        <p>Kilometers (Full)</p>
+                    </div>
+                    <div class="activity-stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-number">4:30</div>
+                        <p>Best Time (Hours)</p>
+                    </div>
+                    <div class="activity-stat-card">
+                        <i class="fas fa-medal"></i>
+                        <div class="stat-number">2</div>
+                        <p>Finisher Medals</p>
+                    </div>
+                </div>
+                
+                <div class="activity-timeline">
+                    <h3 style="margin-bottom: 2rem;">Marathon Journey</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h4>Mumbai Marathon</h4>
+                            <p>Completed full marathon (42.2 km) with timing of 4 hours 45 minutes. Personal achievement and milestone in fitness journey.</p>
+                            <span class="achievement-badge">Finisher Medal</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h4>Bengaluru Marathon</h4>
+                            <p>First full marathon experience. Trained for 6 months and successfully completed with timing of 5 hours 15 minutes.</p>
+                            <span class="achievement-badge">Personal Best</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-content">
+                            <h4>Half-Marathon Series</h4>
+                            <p>Participated in 3 half-marathons (21.1 km) to build endurance and prepare for full marathon.</p>
+                            <span class="achievement-badge">Consistent Performer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-content">
+                            <h4>First 10K Run</h4>
+                            <p>Started running journey with first organized 10K event. Discovered passion for long-distance running.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marathon Photos -->
+                <div class="section-photo-upload">
+                    <button class="upload-section-btn" data-section="marathon">
+                        <i class="fas fa-camera"></i> Add Marathon Photos
+                    </button>
+                </div>
+                <div class="photo-gallery" id="marathonGallery"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Education</span>
+                <h2 class="section-title">Academic <span>Journey</span></h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Engineering</h3>
+                        <p style="color: var(--primary-color);">2022 - Present</p>
+                        <p>Pursuing engineering degree with focus on electronics and IoT systems. Maintaining strong academic performance while preparing for CDS examination.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>CDS Examination Preparation</h3>
+                        <p style="color: var(--primary-color);">2023 - Present</p>
+                        <p>Dedicated preparation for Combined Defence Services examination. Focusing on mathematics, general knowledge, and physical fitness.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Higher Secondary Education</h3>
+                        <p style="color: var(--primary-color);">2020 - 2022</p>
+                        <p>Completed with focus on mathematics and science. Developed interest in technology and defence services.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education Section Photo Gallery -->
+            <div class="section-photo-upload">
+                <button class="upload-section-btn" data-section="education">
+                    <i class="fas fa-camera"></i> Add Photos
+                </button>
+            </div>
+            <div class="photo-gallery" id="educationGallery"></div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Goals & Achievements</span>
+                <h2 class="section-title">Striving for <span>Excellence</span></h2>
+            </div>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    <h3>CDS 2025</h3>
+                    <p>Preparing for Combined Defence Services examination with target of 2025 attempt</p>
+                </div>
+                
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Marathon Completed</h3>
+                    <p>Successfully completed 2 half-marathons with consistent training</p>
+                </div>
+                
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>IoT Certification</h3>
+                    <p>Completed advanced certification in Internet of Things</p>
+                </div>
+                
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Leadership</h3>
+                    <p>Led technical team for college project competition</p>
+                </div>
+            </div>
+            
+            <!-- Achievements Section Photo Gallery -->
+            <div class="section-photo-upload">
+                <button class="upload-section-btn" data-section="achievements">
+                    <i class="fas fa-camera"></i> Add Photos
+                </button>
+            </div>
+            <div class="photo-gallery" id="achievementsGallery"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Contact <span>Me</span></h2>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>kiran.jothi@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Available for</h4>
+                            <p>Collaborations & Opportunities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form reveal" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" rows="4" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="map-container reveal">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem;"></i>
+                    <span>Interactive Map - India</span>
+                </div>
+            </div>
+            
+            <!-- Contact Section Photo Gallery -->
+            <div class="section-photo-upload">
+                <button class="upload-section-btn" data-section="contact">
+                    <i class="fas fa-camera"></i> Add Photos
+                </button>
+            </div>
+            <div class="photo-gallery" id="contactGallery"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Kiran Jothi</div>
+                    <p>Engineering Student | CDS Aspirant | Tech Enthusiast</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#ncc-marathon">NCC & Marathon</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Interests</h4>
+                    <ul>
+                        <li><a href="#">Running</a></li>
+                        <li><a href="#">Yoga</a></li>
+                        <li><a href="#">IoT Projects</a></li>
+                        <li><a href="#">Defence Services</a></li>
+                        <li><a href="#">NCC</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kiran Jothi. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    
+    <script>
+        // Initialize particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 10 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        });
+
+        // Active link highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top button
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Reveal animations on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function reveal() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+
+        // Animated counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        function startCounters() {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const count = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / speed);
+                    
+                    if (count < target) {
+                        counter.innerText = count + increment;
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target + '+';
+                    }
+                };
+                
+                // Check if element is in viewport
+                const elementTop = counter.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100 && !counter.classList.contains('counted')) {
+                    counter.classList.add('counted');
+                    updateCount();
+                }
+            });
+        }
+        
+        // Start counters when scrolling
+        window.addEventListener('scroll', startCounters);
+        startCounters(); // Initial check
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.background = document.body.getAttribute('data-theme') === 'dark' 
+                    ? 'rgba(18, 18, 18, 0.98)' 
+                    : 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.background = document.body.getAttribute('data-theme') === 'dark'
+                    ? 'rgba(18, 18, 18, 0.95)'
+                    : 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Project card tilt effect
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+
+        // NCC & Marathon Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tab + 'Tab').classList.add('active');
+            });
+        });
+
+        // Photo Upload Functionality
+        const modal = document.getElementById('photoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelPhoto');
+        const saveBtn = document.getElementById('savePhoto');
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        
+        // Profile image elements
+        const heroDefaultImg = document.getElementById('heroProfileImg');
+        const heroUploadedImg = document.getElementById('heroUploadedImg');
+        const navDefaultProfile = document.getElementById('navDefaultProfile');
+        const navProfileImg = document.getElementById('navProfileImg');
+        const navProfilePhoto = document.getElementById('navProfilePhoto');
+        
+        let selectedFile = null;
+        let currentSection = 'profile';
+
+        // Open modal for profile photo
+        document.getElementById('uploadPhotoBtn').addEventListener('click', () => {
+            currentSection = 'profile';
+            modalTitle.textContent = 'Upload Profile Photo';
+            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
+            modal.classList.add('active');
+        });
+
+        // Open modal for section photos
+        document.querySelectorAll('.upload-section-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                currentSection = btn.getAttribute('data-section');
+                modalTitle.textContent = `Upload Photo to ${currentSection}`;
+                modalSubtitle.textContent = `Add photos to ${currentSection} section`;
+                modal.classList.add('active');
+            });
+        });
+
+        // Close modal
+        function closeModalFunc() {
+            modal.classList.remove('active');
+            selectedFile = null;
+            // Reset upload area
+            uploadArea.innerHTML = `
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload or drag and drop</p>
+                <p style="font-size: 0.8rem;">PNG, JPG, JPEG up to 5MB</p>
+            `;
+        }
+
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBtn.addEventListener('click', closeModalFunc);
+
+        // Click on modal background to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+
+        // Click on upload area
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // File selection
+        fileInput.addEventListener('change', (e) => {
+            selectedFile = e.target.files[0];
+            if (selectedFile) {
+                // Preview in upload area
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadArea.innerHTML = `
+                        <img src="${e.target.result}" style="max-width: 100%; max-height: 150px; border-radius: 10px;">
+                        <p>Click to change</p>
+                    `;
+                };
+                reader.readAsDataURL(selectedFile);
+            }
+        });
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = 'rgba(67, 97, 238, 0.2)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.background = '';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.background = '';
+            selectedFile = e.dataTransfer.files[0];
+            if (selectedFile && selectedFile.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadArea.innerHTML = `
+                        <img src="${e.target.result}" style="max-width: 100%; max-height: 150px; border-radius: 10px;">
+                        <p>Click to change</p>
+                    `;
+                };
+                reader.readAsDataURL(selectedFile);
+            }
+        });
+
+        // Save photo
+        saveBtn.addEventListener('click', () => {
+            if (selectedFile) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imageUrl = e.target.result;
+                    
+                    if (currentSection === 'profile') {
+                        // Update profile photos
+                        heroDefaultImg.style.display = 'none';
+                        heroUploadedImg.style.display = 'block';
+                        heroUploadedImg.src = imageUrl;
+                        
+                        navDefaultProfile.style.display = 'none';
+                        navProfileImg.style.display = 'block';
+                        navProfileImg.src = imageUrl;
+                        
+                        localStorage.setItem('profilePhoto', imageUrl);
+                    } else {
+                        // Add to section gallery
+                        addPhotoToGallery(currentSection, imageUrl);
+                        
+                        // Save to localStorage
+                        const galleryPhotos = JSON.parse(localStorage.getItem(currentSection + 'Gallery') || '[]');
+                        galleryPhotos.push(imageUrl);
+                        localStorage.setItem(currentSection + 'Gallery', JSON.stringify(galleryPhotos));
+                    }
+                    
+                    closeModalFunc();
+                };
+                reader.readAsDataURL(selectedFile);
+            } else {
+                alert('Please select a photo first');
+            }
+        });
+
+        // Function to add photo to gallery
+        function addPhotoToGallery(section, imageUrl) {
+            const galleryId = section + 'Gallery';
+            const gallery = document.getElementById(galleryId);
+            
+            if (gallery) {
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+                
+                galleryItem.innerHTML = `
+                    <img src="${imageUrl}" alt="Gallery Image">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="delete-photo" onclick="deletePhoto('${section}', '${imageUrl}')">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                `;
+                
+                galleryItem.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('delete-photo') && !e.target.parentElement.classList.contains('delete-photo')) {
+                        // Open lightbox
+                        const lightbox = document.createElement('div');
+                        lightbox.classList.add('modal');
+                        lightbox.innerHTML = `
+                            <span class="close-modal" onclick="this.parentElement.remove()">&times;</span>
+                            <img src="${imageUrl}" style="max-width: 90%; max-height: 90%; border-radius: 10px;">
+                        `;
+                        document.body.appendChild(lightbox);
+                        setTimeout(() => lightbox.classList.add('active'), 100);
+                    }
+                });
+                
+                gallery.appendChild(galleryItem);
+            }
+        }
+
+        // Delete photo function
+        window.deletePhoto = function(section, imageUrl) {
+            if (confirm('Are you sure you want to delete this photo?')) {
+                // Remove from DOM
+                const galleryItems = document.querySelectorAll(`#${section}Gallery .gallery-item`);
+                galleryItems.forEach(item => {
+                    if (item.querySelector('img').src === imageUrl) {
+                        item.remove();
+                    }
+                });
+                
+                // Remove from localStorage
+                const galleryPhotos = JSON.parse(localStorage.getItem(section + 'Gallery') || '[]');
+                const updatedPhotos = galleryPhotos.filter(photo => photo !== imageUrl);
+                localStorage.setItem(section + 'Gallery', JSON.stringify(updatedPhotos));
+            }
+        };
+
+        // Load saved photos from localStorage
+        function loadSavedPhotos() {
+            // Profile photo
+            const savedProfilePhoto = localStorage.getItem('profilePhoto');
+            if (savedProfilePhoto) {
+                heroDefaultImg.style.display = 'none';
+                heroUploadedImg.style.display = 'block';
+                heroUploadedImg.src = savedProfilePhoto;
+                
+                navDefaultProfile.style.display = 'none';
+                navProfileImg.style.display = 'block';
+                navProfileImg.src = savedProfilePhoto;
+            }
+
+            // Section galleries
+            const sections = ['about', 'skills', 'project1', 'project2', 'project3', 'project4', 'fitness', 'ncc', 'marathon', 'education', 'achievements', 'contact'];
+            
+            sections.forEach(section => {
+                const savedPhotos = JSON.parse(localStorage.getItem(section + 'Gallery') || '[]');
+                savedPhotos.forEach(photoUrl => {
+                    addPhotoToGallery(section, photoUrl);
+                });
+            });
+        }
+
+        loadSavedPhotos();
+
+        // Click on nav profile to open upload modal
+        navProfilePhoto.addEventListener('click', () => {
+            currentSection = 'profile';
+            modalTitle.textContent = 'Upload Profile Photo';
+            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
+            modal.classList.add('active');
+        });
+
+        // Click on hero profile to open upload modal
+        heroUploadedImg.addEventListener('click', () => {
+            currentSection = 'profile';
+            modalTitle.textContent = 'Upload Profile Photo';
+            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
+            modal.classList.add('active');
+        });
+        heroDefaultImg.addEventListener('click', () => {
+            currentSection = 'profile';
+            modalTitle.textContent = 'Upload Profile Photo';
+            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
+            modal.classList.add('active');
+        });
+    </script>
+</body>
+</html>
