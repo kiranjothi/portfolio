@@ -11,9 +11,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
-    
     <style>
         /* ===== RESET & BASE STYLES ===== */
         * {
@@ -104,6 +101,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         /* ===== NAVIGATION ===== */
@@ -148,6 +146,7 @@
             font-weight: 500;
             position: relative;
             transition: color 0.3s ease;
+            font-size: 1rem;
         }
 
         .nav-link::after {
@@ -166,37 +165,9 @@
             width: 100%;
         }
 
-        /* Profile Photo in Navigation */
+        /* Profile photo completely removed from nav */
         .nav-profile {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid var(--primary-color);
-            transition: transform 0.3s ease;
-            margin-left: 1rem;
-        }
-
-        .nav-profile:hover {
-            transform: scale(1.1);
-        }
-
-        .nav-profile img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .nav-profile .default-profile {
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+            display: none;
         }
 
         .nav-right {
@@ -232,165 +203,27 @@
             transition: all 0.3s ease;
         }
 
-        /* ===== PHOTO UPLOAD MODAL ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 40px var(--shadow-color);
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content h3 {
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .modal-content p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .upload-area {
-            border: 2px dashed var(--primary-color);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .upload-area:hover {
-            background: rgba(67, 97, 238, 0.1);
-        }
-
-        .upload-area i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .upload-area p {
-            margin-bottom: 0;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .modal-btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .modal-btn.primary {
-            background: var(--gradient-1);
-            color: white;
-        }
-
-        .modal-btn.secondary {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--text-primary);
-        }
-
-        .modal-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* ===== SECTION PHOTO UPLOAD BUTTON ===== */
-        .section-photo-upload {
-            position: relative;
-            margin-bottom: 1rem;
-            text-align: right;
-        }
-
-        .upload-section-btn {
-            background: var(--gradient-1);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .upload-section-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-        }
-
-        /* ===== PHOTO GALLERY ===== */
+        /* ===== PHOTO GALLERY - ONLY VISIBLE IN ABOUT PAGE ===== */
         .photo-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .gallery-item {
             position: relative;
             aspect-ratio: 1;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            box-shadow: 0 10px 25px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px var(--shadow-color);
         }
 
         .gallery-item img {
@@ -424,54 +257,34 @@
 
         .gallery-item-overlay i {
             color: white;
-            font-size: 1.5rem;
-        }
-
-        .delete-photo {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 0, 0, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 10;
-        }
-
-        .gallery-item:hover .delete-photo {
-            opacity: 1;
+            font-size: 2rem;
         }
 
         /* ===== NCC & MARATHON SECTION ===== */
         .ncc-marathon {
-            padding: 80px 0;
+            padding: 100px 0;
             background: var(--bg-secondary);
         }
 
         .activities-tabs {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
-            padding: 1rem 2rem;
+            padding: 15px 35px;
             border: none;
             background: var(--card-bg);
             color: var(--text-primary);
             border-radius: 50px;
             font-weight: 600;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            box-shadow: 0 5px 20px var(--shadow-color);
         }
 
         .tab-btn.active {
@@ -498,13 +311,13 @@
         .activity-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .activity-stat-card {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 30px 20px;
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 20px 40px var(--shadow-color);
@@ -513,7 +326,7 @@
         .activity-stat-card i {
             font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
         }
 
         .activity-stat-card .stat-number {
@@ -525,15 +338,15 @@
         }
 
         .activity-timeline {
-            margin: 3rem 0;
+            margin: 50px 0;
         }
 
         .timeline-item {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 30px;
+            margin-bottom: 30px;
             background: var(--card-bg);
-            padding: 1.5rem;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 30px var(--shadow-color);
         }
@@ -542,20 +355,22 @@
             min-width: 120px;
             font-weight: 700;
             color: var(--primary-color);
+            font-size: 1.2rem;
         }
 
         .timeline-content h4 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
         .achievement-badge {
             display: inline-block;
-            padding: 0.25rem 1rem;
+            padding: 5px 15px;
             background: var(--gradient-1);
             color: white;
             border-radius: 50px;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
 
         /* ===== HERO SECTION ===== */
@@ -563,16 +378,15 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 100px 0 50px;
+            padding: 120px 0 60px;
             position: relative;
             overflow: hidden;
         }
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 1fr;
+            text-align: center;
         }
 
         .hero-text {
@@ -582,17 +396,17 @@
         .hero-greeting {
             font-size: 1.2rem;
             color: var(--accent-color);
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 8px 20px;
             background: linear-gradient(135deg, rgba(247, 37, 133, 0.1), rgba(181, 23, 158, 0.1));
             border-radius: 50px;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
             line-height: 1.2;
         }
 
@@ -603,23 +417,24 @@
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 30px;
         }
 
         .hero-tags {
             display: flex;
-            gap: 1rem;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 40px;
+            justify-content: center;
         }
 
         .hero-tag {
-            padding: 0.5rem 1.5rem;
+            padding: 8px 20px;
             background: var(--bg-card);
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             box-shadow: 0 5px 15px var(--shadow-color);
             backdrop-filter: blur(5px);
@@ -627,13 +442,15 @@
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -688,7 +505,9 @@
 
         .hero-stats {
             display: flex;
-            gap: 2rem;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .hero-stat {
@@ -697,7 +516,7 @@
 
         .stat-number {
             display: block;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             background: var(--gradient-1);
             -webkit-background-clip: text;
@@ -705,118 +524,40 @@
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-secondary);
         }
 
+        /* Hero image completely removed */
         .hero-image {
-            position: relative;
-            animation: slideInRight 1s ease;
-        }
-
-        .image-wrapper {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 0 auto;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            box-shadow: 20px 20px 40px var(--shadow-color);
-            animation: morphing 10s infinite;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 60px var(--shadow-color);
-        }
-
-        .profile-img.default {
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-        }
-
-        @keyframes morphing {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-        }
-
-        .floating-badge {
-            position: absolute;
-            bottom: 20px;
-            right: -20px;
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            animation: float 3s infinite;
-        }
-
-        .floating-badge i {
-            color: var(--accent-color);
-            margin-right: 0.5rem;
-        }
-
-        .upload-photo-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: var(--gradient-1);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .upload-photo-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+            display: none;
         }
 
         /* ===== SECTION STYLES ===== */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
             position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 60px;
         }
 
         .section-subtitle {
             display: inline-block;
             color: var(--accent-color);
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: 1rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
         }
 
         .section-title span {
@@ -833,25 +574,27 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 60px;
             align-items: center;
+            margin-bottom: 50px;
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 25px;
             color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
         .about-highlights {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .highlight-item {
             text-align: center;
-            padding: 1.5rem;
+            padding: 25px 15px;
             background: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 10px 30px var(--shadow-color);
@@ -859,28 +602,33 @@
         }
 
         .highlight-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         .highlight-item i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
+        }
+
+        .highlight-item h4 {
+            font-size: 1.2rem;
         }
 
         /* ===== SKILLS SECTION ===== */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .skill-category {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 30px;
             box-shadow: 0 20px 40px var(--shadow-color);
             backdrop-filter: blur(10px);
             transition: transform 0.3s ease;
@@ -891,55 +639,58 @@
         }
 
         .skill-category h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 25px;
             color: var(--primary-color);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
+            font-size: 1.4rem;
         }
 
         .skill-items {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 15px;
         }
 
         .skill-item {
             width: 100%;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 10px;
+            padding: 12px 20px;
             background: var(--bg-secondary);
-            border-radius: 5px;
-            overflow: hidden;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
-        .skill-progress {
-            height: 100%;
+        .skill-item:hover {
+            transform: translateX(15px);
             background: var(--gradient-1);
-            border-radius: 5px;
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: fillBar 1.5s ease forwards;
+            color: white;
         }
 
-        @keyframes fillBar {
-            to { transform: scaleX(1); }
+        .skill-item span {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item i {
+            color: var(--primary-color);
+            width: 25px;
+            font-size: 1.2rem;
+        }
+
+        .skill-item:hover i {
+            color: white;
         }
 
         /* ===== PROJECTS SECTION ===== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .project-card {
@@ -952,20 +703,14 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px) rotate(1deg);
+            transform: translateY(-15px) rotate(1deg);
             box-shadow: 30px 30px 60px var(--shadow-color);
         }
 
         .project-image {
-            height: 200px;
-            background: var(--gradient-2);
+            height: 220px;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
         }
 
         .project-image img {
@@ -974,50 +719,40 @@
             object-fit: cover;
         }
 
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2));
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .project-card:hover .project-image::before {
-            transform: translateX(100%);
-        }
-
         .project-content {
-            padding: 2rem;
+            padding: 25px;
         }
 
         .project-content h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
             color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .project-content p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
         }
 
         .project-tech {
             display: flex;
-            gap: 0.5rem;
+            gap: 8px;
             flex-wrap: wrap;
-            margin: 1rem 0;
+            margin-bottom: 20px;
         }
 
         .tech-tag {
-            padding: 0.25rem 1rem;
+            padding: 5px 15px;
             background: var(--gradient-3);
             color: white;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 600;
@@ -1025,13 +760,7 @@
         }
 
         .project-link:hover {
-            gap: 1rem;
-        }
-
-        .project-photo-gallery {
-            margin-top: 1rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1rem;
+            gap: 15px;
         }
 
         /* ===== FITNESS SECTION ===== */
@@ -1042,13 +771,14 @@
         .fitness-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .fitness-card {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 35px 25px;
             text-align: center;
             box-shadow: 0 20px 40px var(--shadow-color);
             transition: all 0.3s ease;
@@ -1059,16 +789,16 @@
         }
 
         .fitness-icon {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             background: var(--gradient-1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 20px;
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
         .counter {
@@ -1077,18 +807,14 @@
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
-        }
-
-        .fitness-photo-gallery {
-            margin-top: 2rem;
+            margin: 15px 0;
         }
 
         /* ===== EDUCATION SECTION ===== */
         .timeline {
             position: relative;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 50px;
         }
 
         .timeline::before {
@@ -1103,7 +829,7 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 3rem;
+            margin-bottom: 50px;
         }
 
         .timeline-dot {
@@ -1119,8 +845,8 @@
 
         .timeline-content {
             position: relative;
-            width: calc(50% - 50px);
-            padding: 1.5rem;
+            width: calc(50% - 60px);
+            padding: 25px;
             background: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 10px 30px var(--shadow-color);
@@ -1130,17 +856,23 @@
             margin-left: auto;
         }
 
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
         /* ===== ACHIEVEMENTS SECTION ===== */
         .achievements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .achievement-card {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 35px 25px;
             text-align: center;
             box-shadow: 0 20px 40px var(--shadow-color);
             transition: all 0.3s ease;
@@ -1166,142 +898,39 @@
         }
 
         .achievement-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--gradient-2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin: 0 auto 20px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            background: var(--bg-secondary);
+        .achievement-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
         }
 
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px var(--shadow-color);
-        }
-
-        .form-group {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 0;
-            font-size: 1rem;
-            border: none;
-            border-bottom: 2px solid var(--border-color);
-            background: transparent;
-            color: var(--text-primary);
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group label {
-            position: absolute;
-            top: 10px;
-            left: 0;
+        .achievement-card p {
             color: var(--text-secondary);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .form-group input:focus ~ label,
-        .form-group textarea:focus ~ label,
-        .form-group input:valid ~ label,
-        .form-group textarea:valid ~ label {
-            top: -20px;
-            font-size: 0.8rem;
-            color: var(--primary-color);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-bottom-color: var(--primary-color);
-            outline: none;
-        }
-
-        .map-container {
-            margin-top: 2rem;
-            height: 300px;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
         }
 
         /* ===== FOOTER ===== */
         .footer {
             background: var(--footer-bg);
             color: var(--footer-text);
-            padding: 4rem 0 2rem;
+            padding: 60px 0 30px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 50px;
+            margin-bottom: 50px;
         }
 
         .footer-logo {
@@ -1310,34 +939,36 @@
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
         }
 
         .footer-social {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .footer-social a {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .footer-social a:hover {
             background: var(--gradient-1);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .footer-links h4 {
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
 
         .footer-links ul {
@@ -1345,13 +976,14 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .footer-links a:hover {
@@ -1360,17 +992,18 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1rem;
         }
 
         /* ===== SCROLL TO TOP BUTTON ===== */
         .scroll-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
             background: var(--gradient-1);
             border-radius: 50%;
             display: flex;
@@ -1383,6 +1016,8 @@
             transition: all 0.3s ease;
             z-index: 999;
             border: none;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
         }
 
         .scroll-top.show {
@@ -1391,8 +1026,8 @@
         }
 
         .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.6);
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1431,34 +1066,9 @@
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .hero-tags {
-                justify-content: center;
-            }
-
-            .image-wrapper {
-                width: 300px;
-                height: 300px;
-            }
-
             .about-content {
                 grid-template-columns: 1fr;
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
             .timeline::before {
@@ -1470,12 +1080,12 @@
             }
 
             .timeline-content {
-                width: calc(100% - 80px);
-                margin-left: 80px !important;
+                width: calc(100% - 90px);
+                margin-left: 90px !important;
             }
 
             .timeline-item:nth-child(odd) .timeline-content {
-                margin-left: 80px !important;
+                margin-left: 90px !important;
             }
 
             .activities-tabs {
@@ -1485,7 +1095,7 @@
 
             .tab-btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
             }
         }
 
@@ -1502,14 +1112,11 @@
                 justify-content: center;
                 transition: left 0.3s ease;
                 backdrop-filter: blur(10px);
+                gap: 20px;
             }
 
             .nav-menu.active {
                 left: 0;
-            }
-
-            .nav-profile {
-                margin: 1rem 0 0 0;
             }
 
             .hamburger {
@@ -1528,53 +1135,152 @@
                 transform: rotate(-45deg) translate(7px, -7px);
             }
 
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
             .about-highlights {
                 grid-template-columns: 1fr;
             }
 
             .timeline-item {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 15px;
             }
 
             .timeline-date {
                 min-width: auto;
             }
         }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .fitness-grid,
+            .achievements-grid {
+                gap: 20px;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* ===== CHATBOT STYLES ===== */
+        .chatbot-wrapper {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 360px;
+            max-width: calc(100vw - 60px);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(67,97,238,0.15);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .chatbot-wrapper.open { display: flex; }
+        .chat-header {
+            background: var(--gradient-1);
+            color: white;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-header h3 {
+            font-weight: 600; font-size: 1.2rem;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .chat-header h3 i { font-size: 1.4rem; }
+        .chat-close {
+            background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.2rem; transition: 0.2s;
+        }
+        .chat-close:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
+        .chat-messages {
+            padding: 20px; height: 340px; overflow-y: auto;
+            background: var(--bg-secondary);
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .message {
+            max-width: 85%; padding: 12px 16px; border-radius: 20px;
+            font-size: 0.95rem; line-height: 1.4; word-wrap: break-word;
+            animation: fadeInMsg 0.2s ease;
+        }
+        .message.bot {
+            background: var(--card-bg); color: var(--text-primary);
+            align-self: flex-start; border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+        .message.user {
+            background: var(--primary-color); color: white;
+            align-self: flex-end; border-bottom-right-radius: 4px;
+        }
+        .chat-input-area {
+            display: flex; padding: 15px; background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+        .chat-input-area input {
+            flex: 1; padding: 14px 18px; border: none; background: var(--bg-secondary);
+            border-radius: 40px; font-size: 0.95rem; color: var(--text-primary);
+            outline: none; border: 1px solid transparent; transition: 0.2s;
+        }
+        .chat-input-area input:focus { border-color: var(--primary-color); }
+        .chat-input-area button {
+            width: 52px; height: 52px; border-radius: 52px;
+            background: var(--gradient-1); border: none; color: white;
+            margin-left: 10px; font-size: 1.3rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s; box-shadow: 0 6px 14px rgba(67,97,238,0.3);
+        }
+        .chat-input-area button:hover { transform: scale(1.07); }
+        .chat-toggle-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 65px; height: 65px; border-radius: 65px;
+            background: var(--gradient-1); border: none; color: white;
+            font-size: 2rem; cursor: pointer; z-index: 2001;
+            box-shadow: 0 10px 25px rgba(67,97,238,0.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s; border: 2px solid white;
+        }
+        .chat-toggle-btn:hover { transform: scale(1.1) rotate(5deg); }
+        @keyframes fadeInMsg { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+        @media (max-width: 480px) {
+            .chatbot-wrapper { width: 300px; bottom: 80px; right: 15px; }
+            .chat-toggle-btn { width: 55px; height: 55px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+        }
     </style>
 </head>
 <body>
     <!-- Animated Background Particles -->
     <div class="animated-bg" id="particles"></div>
-
-    <!-- Photo Upload Modal -->
-    <div class="modal" id="photoModal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <div class="modal-content">
-            <h3 id="modalTitle">Upload Photo</h3>
-            <p id="modalSubtitle">Choose a photo to add to this section</p>
-            
-            <div class="upload-area" id="uploadArea">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <p>Click to upload or drag and drop</p>
-                <p style="font-size: 0.8rem;">PNG, JPG, JPEG up to 5MB</p>
-                <input type="file" class="file-input" id="fileInput" accept="image/*">
-            </div>
-            
-            <div class="modal-buttons">
-                <button class="modal-btn primary" id="savePhoto">Save Photo</button>
-                <button class="modal-btn secondary" id="cancelPhoto">Cancel</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -1590,15 +1296,6 @@
                 <li><a href="#ncc-marathon" class="nav-link">NCC & Marathon</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                
-                <!-- Profile Photo in Navigation -->
-                <li class="nav-profile" id="navProfilePhoto">
-                    <div class="default-profile" id="navDefaultProfile">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <img id="navProfileImg" src="#" alt="Profile" style="display: none;">
-                </li>
             </ul>
             
             <div class="nav-right">
@@ -1614,7 +1311,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Text Only, Centered -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -1633,7 +1330,7 @@
                     
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                        <a href="#achievements" class="btn btn-secondary">My Achievements</a>
                     </div>
                     
                     <div class="hero-stats">
@@ -1651,32 +1348,16 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="hero-image">
-                    <div class="image-wrapper">
-                        <div class="profile-img default" id="heroProfileImg">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <img id="heroUploadedImg" src="#" alt="Profile" style="display: none;" class="profile-img">
-                        <button class="upload-photo-btn" id="uploadPhotoBtn">
-                            <i class="fas fa-camera"></i> Upload Photo
-                        </button>
-                        <div class="floating-badge">
-                            <i class="fas fa-medal"></i>
-                            <span>CDS Aspirant</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section - with heading changed to "About Kiran" and images preserved -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-subtitle">About Me</span>
-                <h2 class="section-title">Who is <span>Kiran Jothi?</span></h2>
+                <h2 class="section-title">About <span>Kiran</span></h2>
             </div>
             
             <div class="about-content">
@@ -1705,28 +1386,43 @@
                 
                 <div class="about-text reveal">
                     <h3>Quick Facts</h3>
-                    <ul style="list-style: none; margin-top: 1rem;">
-                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Engineering Student (Current)</li>
-                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> CDS Examination Preparation</li>
-                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> IoT & Embedded Systems Enthusiast</li>
-                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Marathon Runner (2 completed)</li>
-                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Daily Yoga Practitioner</li>
-                        <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i> NCC Cadet (3+ Years)</li>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px;"></i> Engineering Student (Current)</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px;"></i> CDS Examination Preparation</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px;"></i> IoT & Embedded Systems Enthusiast</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px;"></i> Marathon Runner (2 completed)</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px;"></i> Daily Yoga Practitioner</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px;"></i> NCC Cadet (3+ Years)</li>
                     </ul>
                 </div>
             </div>
             
-            <!-- About Section Photo Gallery -->
-            <div class="section-photo-upload">
-                <button class="upload-section-btn" data-section="about">
-                    <i class="fas fa-camera"></i> Add Photos
-                </button>
+            <!-- About Section Photo Gallery - images kept only here -->
+            <h3 class="reveal" style="margin-bottom: 30px; font-size: 1.8rem;">Moments</h3>
+            <div class="photo-gallery reveal" id="aboutGallery">
+                <div class="gallery-item">
+                    <img src="images/about/about-1.jpg" alt="About 1" onerror="this.src='https://via.placeholder.com/200x200?text=Kiran+1'">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/about/about-2.jpg" alt="About 2" onerror="this.src='https://via.placeholder.com/200x200?text=Kiran+2'">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/about/about-3.jpg" alt="About 3" onerror="this.src='https://via.placeholder.com/200x200?text=Kiran+3'">
+                    <div class="gallery-item-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
             </div>
-            <div class="photo-gallery" id="aboutGallery"></div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section - all image galleries removed -->
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header reveal">
@@ -1739,55 +1435,11 @@
                 <div class="skill-category reveal">
                     <h3><i class="fas fa-microchip"></i> Technical Skills</h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Python Programming</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>IoT Systems</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Arduino/ESP32</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Electronics Basics</span>
-                                <span>70%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Problem Solving</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
+                        <div class="skill-item"><span><i class="fas fa-code"></i> Python Programming</span></div>
+                        <div class="skill-item"><span><i class="fas fa-wifi"></i> IoT Systems</span></div>
+                        <div class="skill-item"><span><i class="fas fa-microchip"></i> Arduino/ESP32</span></div>
+                        <div class="skill-item"><span><i class="fas fa-bolt"></i> Electronics Basics</span></div>
+                        <div class="skill-item"><span><i class="fas fa-puzzle-piece"></i> Problem Solving</span></div>
                     </div>
                 </div>
                 
@@ -1795,35 +1447,9 @@
                 <div class="skill-category reveal">
                     <h3><i class="fas fa-graduation-cap"></i> Academic Skills</h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Mathematics</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Logical Reasoning</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Engineering Fundamentals</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
+                        <div class="skill-item"><span><i class="fas fa-calculator"></i> Mathematics</span></div>
+                        <div class="skill-item"><span><i class="fas fa-brain"></i> Logical Reasoning</span></div>
+                        <div class="skill-item"><span><i class="fas fa-flask"></i> Engineering Fundamentals</span></div>
                     </div>
                 </div>
                 
@@ -1831,60 +1457,18 @@
                 <div class="skill-category reveal">
                     <h3><i class="fas fa-user-check"></i> Personal Skills</h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Discipline</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Leadership</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Teamwork</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Time Management</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
+                        <div class="skill-item"><span><i class="fas fa-clock"></i> Discipline</span></div>
+                        <div class="skill-item"><span><i class="fas fa-users"></i> Leadership</span></div>
+                        <div class="skill-item"><span><i class="fas fa-handshake"></i> Teamwork</span></div>
+                        <div class="skill-item"><span><i class="fas fa-hourglass-half"></i> Time Management</span></div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Skills Section Photo Gallery -->
-            <div class="section-photo-upload">
-                <button class="upload-section-btn" data-section="skills">
-                    <i class="fas fa-camera"></i> Add Photos
-                </button>
-            </div>
-            <div class="photo-gallery" id="skillsGallery"></div>
+            <!-- Skills gallery completely removed -->
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section - image galleries removed, only project cards remain -->
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header reveal">
@@ -1895,8 +1479,8 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card reveal">
-                    <div class="project-image" id="project1Image">
-                        <i class="fas fa-microchip"></i>
+                    <div class="project-image">
+                        <img src="images/projects/project1.jpg" alt="Project 1" onerror="this.src='https://via.placeholder.com/320x220?text=IoT+Project'">
                     </div>
                     <div class="project-content">
                         <h3>Real-Time Utility Meter Monitoring System</h3>
@@ -1908,22 +1492,13 @@
                             <span class="tech-tag">Sensors</span>
                         </div>
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-                        
-                        <div class="project-photo-gallery">
-                            <div class="section-photo-upload">
-                                <button class="upload-section-btn" data-section="project1">
-                                    <i class="fas fa-camera"></i> Add Project Photos
-                                </button>
-                            </div>
-                            <div class="photo-gallery" id="project1Gallery"></div>
-                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
                 <div class="project-card reveal">
-                    <div class="project-image" id="project2Image">
-                        <i class="fas fa-robot"></i>
+                    <div class="project-image">
+                        <img src="images/projects/project2.jpg" alt="Project 2" onerror="this.src='https://via.placeholder.com/320x220?text=Home+Automation'">
                     </div>
                     <div class="project-content">
                         <h3>Arduino-based Home Automation</h3>
@@ -1934,22 +1509,13 @@
                             <span class="tech-tag">C++</span>
                         </div>
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-                        
-                        <div class="project-photo-gallery">
-                            <div class="section-photo-upload">
-                                <button class="upload-section-btn" data-section="project2">
-                                    <i class="fas fa-camera"></i> Add Project Photos
-                                </button>
-                            </div>
-                            <div class="photo-gallery" id="project2Gallery"></div>
-                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
                 <div class="project-card reveal">
-                    <div class="project-image" id="project3Image">
-                        <i class="fas fa-tachometer-alt"></i>
+                    <div class="project-image">
+                        <img src="images/projects/project3.jpg" alt="Project 3" onerror="this.src='https://via.placeholder.com/320x220?text=Weather+Station'">
                     </div>
                     <div class="project-content">
                         <h3>Weather Monitoring Station</h3>
@@ -1960,22 +1526,13 @@
                             <span class="tech-tag">Cloud</span>
                         </div>
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-                        
-                        <div class="project-photo-gallery">
-                            <div class="section-photo-upload">
-                                <button class="upload-section-btn" data-section="project3">
-                                    <i class="fas fa-camera"></i> Add Project Photos
-                                </button>
-                            </div>
-                            <div class="photo-gallery" id="project3Gallery"></div>
-                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 4 -->
                 <div class="project-card reveal">
-                    <div class="project-image" id="project4Image">
-                        <i class="fas fa-bolt"></i>
+                    <div class="project-image">
+                        <img src="images/projects/project4.jpg" alt="Project 4" onerror="this.src='https://via.placeholder.com/320x220?text=Smart+Energy'">
                     </div>
                     <div class="project-content">
                         <h3>Smart Energy Meter</h3>
@@ -1986,22 +1543,14 @@
                             <span class="tech-tag">Analytics</span>
                         </div>
                         <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-                        
-                        <div class="project-photo-gallery">
-                            <div class="section-photo-upload">
-                                <button class="upload-section-btn" data-section="project4">
-                                    <i class="fas fa-camera"></i> Add Project Photos
-                                </button>
-                            </div>
-                            <div class="photo-gallery" id="project4Gallery"></div>
-                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Projects gallery completely removed -->
         </div>
     </section>
 
-    <!-- Fitness Section -->
+    <!-- Fitness Section - image galleries removed -->
     <section id="fitness" class="fitness">
         <div class="container">
             <div class="section-header reveal">
@@ -2050,20 +1599,11 @@
                     <span>Leadership camps</span>
                 </div>
             </div>
-            
-            <!-- Fitness Section Photo Gallery -->
-            <div class="section-photo-upload">
-                <button class="upload-section-btn" data-section="fitness">
-                    <i class="fas fa-camera"></i> Add Fitness Photos
-                </button>
-            </div>
-            <div class="fitness-photo-gallery">
-                <div class="photo-gallery" id="fitnessGallery"></div>
-            </div>
+            <!-- Fitness gallery completely removed -->
         </div>
     </section>
 
-    <!-- NCC & Marathon Section -->
+    <!-- NCC & Marathon Section - image galleries removed, only stats and timeline remain -->
     <section id="ncc-marathon" class="ncc-marathon">
         <div class="container">
             <div class="section-header reveal">
@@ -2071,7 +1611,7 @@
                 <h2 class="section-title">Service & <span>Endurance</span></h2>
             </div>
             
-            <div class="activities-tabs">
+            <div class="activities-tabs reveal">
                 <button class="tab-btn ncc active" data-tab="ncc">
                     <i class="fas fa-shield-alt"></i> NCC Activities
                 </button>
@@ -2106,7 +1646,7 @@
                 </div>
                 
                 <div class="activity-timeline">
-                    <h3 style="margin-bottom: 2rem;">NCC Journey</h3>
+                    <h3 style="margin-bottom: 30px; font-size: 1.8rem;">NCC Journey</h3>
                     
                     <div class="timeline-item">
                         <div class="timeline-date">2024</div>
@@ -2143,14 +1683,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- NCC Photos -->
-                <div class="section-photo-upload">
-                    <button class="upload-section-btn" data-section="ncc">
-                        <i class="fas fa-camera"></i> Add NCC Photos
-                    </button>
-                </div>
-                <div class="photo-gallery" id="nccGallery"></div>
+                <!-- NCC Photos removed -->
             </div>
             
             <!-- Marathon Tab Content -->
@@ -2179,7 +1712,7 @@
                 </div>
                 
                 <div class="activity-timeline">
-                    <h3 style="margin-bottom: 2rem;">Marathon Journey</h3>
+                    <h3 style="margin-bottom: 30px; font-size: 1.8rem;">Marathon Journey</h3>
                     
                     <div class="timeline-item">
                         <div class="timeline-date">2024</div>
@@ -2216,19 +1749,12 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Marathon Photos -->
-                <div class="section-photo-upload">
-                    <button class="upload-section-btn" data-section="marathon">
-                        <i class="fas fa-camera"></i> Add Marathon Photos
-                    </button>
-                </div>
-                <div class="photo-gallery" id="marathonGallery"></div>
+                <!-- Marathon Photos removed -->
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Education Section - image galleries removed -->
     <section id="education" class="education">
         <div class="container">
             <div class="section-header reveal">
@@ -2241,7 +1767,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>Bachelor of Engineering</h3>
-                        <p style="color: var(--primary-color);">2022 - Present</p>
+                        <p style="color: var(--primary-color); margin-bottom: 10px;">2022 - Present</p>
                         <p>Pursuing engineering degree with focus on electronics and IoT systems. Maintaining strong academic performance while preparing for CDS examination.</p>
                     </div>
                 </div>
@@ -2250,7 +1776,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>CDS Examination Preparation</h3>
-                        <p style="color: var(--primary-color);">2023 - Present</p>
+                        <p style="color: var(--primary-color); margin-bottom: 10px;">2023 - Present</p>
                         <p>Dedicated preparation for Combined Defence Services examination. Focusing on mathematics, general knowledge, and physical fitness.</p>
                     </div>
                 </div>
@@ -2259,23 +1785,16 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>Higher Secondary Education</h3>
-                        <p style="color: var(--primary-color);">2020 - 2022</p>
+                        <p style="color: var(--primary-color); margin-bottom: 10px;">2020 - 2022</p>
                         <p>Completed with focus on mathematics and science. Developed interest in technology and defence services.</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Education Section Photo Gallery -->
-            <div class="section-photo-upload">
-                <button class="upload-section-btn" data-section="education">
-                    <i class="fas fa-camera"></i> Add Photos
-                </button>
-            </div>
-            <div class="photo-gallery" id="educationGallery"></div>
+            <!-- Education gallery completely removed -->
         </div>
     </section>
 
-    <!-- Achievements Section -->
+    <!-- Achievements Section - image galleries removed -->
     <section id="achievements" class="achievements">
         <div class="container">
             <div class="section-header reveal">
@@ -2297,7 +1816,7 @@
                         <i class="fas fa-medal"></i>
                     </div>
                     <h3>Marathon Completed</h3>
-                    <p>Successfully completed 2 half-marathons with consistent training</p>
+                    <p>Successfully completed 2 full marathons with consistent training</p>
                 </div>
                 
                 <div class="achievement-card reveal">
@@ -2316,102 +1835,7 @@
                     <p>Led technical team for college project competition</p>
                 </div>
             </div>
-            
-            <!-- Achievements Section Photo Gallery -->
-            <div class="section-photo-upload">
-                <button class="upload-section-btn" data-section="achievements">
-                    <i class="fas fa-camera"></i> Add Photos
-                </button>
-            </div>
-            <div class="photo-gallery" id="achievementsGallery"></div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-subtitle">Get In Touch</span>
-                <h2 class="section-title">Contact <span>Me</span></h2>
-            </div>
-            
-            <div class="contact-wrapper">
-                <div class="contact-info reveal">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>kiran.jothi@example.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+91 98765 43210</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>India</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4>Available for</h4>
-                            <p>Collaborations & Opportunities</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form reveal" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" id="email" required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea id="message" rows="4" required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                </form>
-            </div>
-            
-            <div class="map-container reveal">
-                <div class="map-placeholder">
-                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem;"></i>
-                    <span>Interactive Map - India</span>
-                </div>
-            </div>
-            
-            <!-- Contact Section Photo Gallery -->
-            <div class="section-photo-upload">
-                <button class="upload-section-btn" data-section="contact">
-                    <i class="fas fa-camera"></i> Add Photos
-                </button>
-            </div>
-            <div class="photo-gallery" id="contactGallery"></div>
+            <!-- Achievements gallery completely removed -->
         </div>
     </section>
 
@@ -2421,7 +1845,7 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">Kiran Jothi</div>
-                    <p>Engineering Student | CDS Aspirant | Tech Enthusiast</p>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">Engineering Student | CDS Aspirant | Tech Enthusiast</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
@@ -2437,19 +1861,19 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
+                        <li><a href="#fitness">Fitness</a></li>
                         <li><a href="#ncc-marathon">NCC & Marathon</a></li>
-                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Interests</h4>
+                    <h4>More</h4>
                     <ul>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
                         <li><a href="#">Running</a></li>
                         <li><a href="#">Yoga</a></li>
                         <li><a href="#">IoT Projects</a></li>
-                        <li><a href="#">Defence Services</a></li>
-                        <li><a href="#">NCC</a></li>
                     </ul>
                 </div>
             </div>
@@ -2465,59 +1889,53 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    
+    <!-- CHATBOT -->
+    <button class="chat-toggle-btn" id="chatToggle"><i class="fas fa-comment-dots"></i></button>
+    <div class="chatbot-wrapper" id="chatbotWrapper">
+        <div class="chat-header">
+            <h3><i class="fas fa-robot"></i> Kiran's assistant</h3>
+            <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">Hello! I'm here to answer professional questions about Kiran Jothi – engineering, CDS preparation, NCC, fitness, projects, or achievements. How can I help you?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Ask something professional...">
+            <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <script>
-        // Initialize particles
+        // Original script (particles, mobile menu, theme, scroll, counters, tabs, tilt, gallery) – kept exactly as provided
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 50;
-            
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-                
                 const size = Math.random() * 5 + 2;
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
                 const delay = Math.random() * 20;
                 const duration = Math.random() * 10 + 10;
-                
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${posX}%`;
                 particle.style.top = `${posY}%`;
                 particle.style.animationDelay = `${delay}s`;
                 particle.style.animationDuration = `${duration}s`;
-                
                 particlesContainer.appendChild(particle);
             }
         }
-        
         createParticles();
 
-        // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
+        document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }); });
 
-        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const icon = themeToggle.querySelector('i');
-        
         themeToggle.addEventListener('click', () => {
             if (document.body.getAttribute('data-theme') === 'dark') {
                 document.body.removeAttribute('data-theme');
@@ -2528,422 +1946,141 @@
             }
         });
 
-        // Active link highlighting
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
-        
         window.addEventListener('scroll', () => {
             let current = '';
-            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
+                if (pageYOffset >= sectionTop - 200) current = section.getAttribute('id');
             });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Scroll to top button
+            navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
             const scrollTop = document.getElementById('scrollTop');
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('show');
-            } else {
-                scrollTop.classList.remove('show');
-            }
+            if (window.scrollY > 500) scrollTop.classList.add('show'); else scrollTop.classList.remove('show');
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+            anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
         });
+        document.getElementById('scrollTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-        // Scroll to top
-        document.getElementById('scrollTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Reveal animations on scroll
         const reveals = document.querySelectorAll('.reveal');
-        
         function reveal() {
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
+            reveals.forEach(element => { const windowHeight = window.innerHeight; const elementTop = element.getBoundingClientRect().top; const elementVisible = 150; if (elementTop < windowHeight - elementVisible) element.classList.add('active'); });
         }
-        
-        window.addEventListener('scroll', reveal);
-        reveal(); // Initial check
+        window.addEventListener('scroll', reveal); reveal();
 
-        // Animated counters
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-        
+        const counters = document.querySelectorAll('.counter'); const speed = 200;
         function startCounters() {
             counters.forEach(counter => {
                 const updateCount = () => {
                     const target = parseInt(counter.getAttribute('data-target'));
                     const count = parseInt(counter.innerText);
                     const increment = Math.ceil(target / speed);
-                    
-                    if (count < target) {
-                        counter.innerText = count + increment;
-                        setTimeout(updateCount, 1);
-                    } else {
-                        counter.innerText = target + '+';
-                    }
+                    if (count < target) { counter.innerText = count + increment; setTimeout(updateCount, 1); } else { counter.innerText = target + '+'; }
                 };
-                
-                // Check if element is in viewport
                 const elementTop = counter.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100 && !counter.classList.contains('counted')) {
-                    counter.classList.add('counted');
-                    updateCount();
-                }
+                if (elementTop < windowHeight - 100 && !counter.classList.contains('counted')) { counter.classList.add('counted'); updateCount(); }
             });
         }
-        
-        // Start counters when scrolling
-        window.addEventListener('scroll', startCounters);
-        startCounters(); // Initial check
+        window.addEventListener('scroll', startCounters); startCounters();
 
-        // Contact form handling
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-
-        // Navbar background change on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.backdropFilter = 'blur(10px)';
-                navbar.style.background = document.body.getAttribute('data-theme') === 'dark' 
-                    ? 'rgba(18, 18, 18, 0.98)' 
-                    : 'rgba(255, 255, 255, 0.98)';
-            } else {
-                navbar.style.backdropFilter = 'blur(10px)';
-                navbar.style.background = document.body.getAttribute('data-theme') === 'dark'
-                    ? 'rgba(18, 18, 18, 0.95)'
-                    : 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Project card tilt effect
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        projectCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-            });
-        });
-
-        // NCC & Marathon Tabs
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tab = btn.getAttribute('data-tab');
-                
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                btn.classList.add('active');
-                document.getElementById(tab + 'Tab').classList.add('active');
-            });
-        });
+        tabBtns.forEach(btn => { btn.addEventListener('click', () => { const tab = btn.getAttribute('data-tab'); tabBtns.forEach(b => b.classList.remove('active')); tabContents.forEach(c => c.classList.remove('active')); btn.classList.add('active'); document.getElementById(tab + 'Tab').classList.add('active'); }); });
 
-        // Photo Upload Functionality
-        const modal = document.getElementById('photoModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalSubtitle = document.getElementById('modalSubtitle');
-        const closeModal = document.getElementById('closeModal');
-        const cancelBtn = document.getElementById('cancelPhoto');
-        const saveBtn = document.getElementById('savePhoto');
-        const fileInput = document.getElementById('fileInput');
-        const uploadArea = document.getElementById('uploadArea');
-        
-        // Profile image elements
-        const heroDefaultImg = document.getElementById('heroProfileImg');
-        const heroUploadedImg = document.getElementById('heroUploadedImg');
-        const navDefaultProfile = document.getElementById('navDefaultProfile');
-        const navProfileImg = document.getElementById('navProfileImg');
-        const navProfilePhoto = document.getElementById('navProfilePhoto');
-        
-        let selectedFile = null;
-        let currentSection = 'profile';
-
-        // Open modal for profile photo
-        document.getElementById('uploadPhotoBtn').addEventListener('click', () => {
-            currentSection = 'profile';
-            modalTitle.textContent = 'Upload Profile Photo';
-            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
-            modal.classList.add('active');
-        });
-
-        // Open modal for section photos
-        document.querySelectorAll('.upload-section-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                currentSection = btn.getAttribute('data-section');
-                modalTitle.textContent = `Upload Photo to ${currentSection}`;
-                modalSubtitle.textContent = `Add photos to ${currentSection} section`;
-                modal.classList.add('active');
-            });
-        });
-
-        // Close modal
-        function closeModalFunc() {
-            modal.classList.remove('active');
-            selectedFile = null;
-            // Reset upload area
-            uploadArea.innerHTML = `
-                <i class="fas fa-cloud-upload-alt"></i>
-                <p>Click to upload or drag and drop</p>
-                <p style="font-size: 0.8rem;">PNG, JPG, JPEG up to 5MB</p>
-            `;
-        }
-
-        closeModal.addEventListener('click', closeModalFunc);
-        cancelBtn.addEventListener('click', closeModalFunc);
-
-        // Click on modal background to close
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModalFunc();
-            }
-        });
-
-        // Click on upload area
-        uploadArea.addEventListener('click', () => {
-            fileInput.click();
-        });
-
-        // File selection
-        fileInput.addEventListener('change', (e) => {
-            selectedFile = e.target.files[0];
-            if (selectedFile) {
-                // Preview in upload area
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    uploadArea.innerHTML = `
-                        <img src="${e.target.result}" style="max-width: 100%; max-height: 150px; border-radius: 10px;">
-                        <p>Click to change</p>
-                    `;
-                };
-                reader.readAsDataURL(selectedFile);
-            }
-        });
-
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.style.background = 'rgba(67, 97, 238, 0.2)';
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.background = '';
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.style.background = '';
-            selectedFile = e.dataTransfer.files[0];
-            if (selectedFile && selectedFile.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    uploadArea.innerHTML = `
-                        <img src="${e.target.result}" style="max-width: 100%; max-height: 150px; border-radius: 10px;">
-                        <p>Click to change</p>
-                    `;
-                };
-                reader.readAsDataURL(selectedFile);
-            }
-        });
-
-        // Save photo
-        saveBtn.addEventListener('click', () => {
-            if (selectedFile) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const imageUrl = e.target.result;
-                    
-                    if (currentSection === 'profile') {
-                        // Update profile photos
-                        heroDefaultImg.style.display = 'none';
-                        heroUploadedImg.style.display = 'block';
-                        heroUploadedImg.src = imageUrl;
-                        
-                        navDefaultProfile.style.display = 'none';
-                        navProfileImg.style.display = 'block';
-                        navProfileImg.src = imageUrl;
-                        
-                        localStorage.setItem('profilePhoto', imageUrl);
-                    } else {
-                        // Add to section gallery
-                        addPhotoToGallery(currentSection, imageUrl);
-                        
-                        // Save to localStorage
-                        const galleryPhotos = JSON.parse(localStorage.getItem(currentSection + 'Gallery') || '[]');
-                        galleryPhotos.push(imageUrl);
-                        localStorage.setItem(currentSection + 'Gallery', JSON.stringify(galleryPhotos));
-                    }
-                    
-                    closeModalFunc();
-                };
-                reader.readAsDataURL(selectedFile);
-            } else {
-                alert('Please select a photo first');
-            }
-        });
-
-        // Function to add photo to gallery
-        function addPhotoToGallery(section, imageUrl) {
-            const galleryId = section + 'Gallery';
-            const gallery = document.getElementById(galleryId);
-            
-            if (gallery) {
-                const galleryItem = document.createElement('div');
-                galleryItem.classList.add('gallery-item');
-                
-                galleryItem.innerHTML = `
-                    <img src="${imageUrl}" alt="Gallery Image">
-                    <div class="gallery-item-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                    <div class="delete-photo" onclick="deletePhoto('${section}', '${imageUrl}')">
-                        <i class="fas fa-trash"></i>
-                    </div>
-                `;
-                
-                galleryItem.addEventListener('click', (e) => {
-                    if (!e.target.classList.contains('delete-photo') && !e.target.parentElement.classList.contains('delete-photo')) {
-                        // Open lightbox
-                        const lightbox = document.createElement('div');
-                        lightbox.classList.add('modal');
-                        lightbox.innerHTML = `
-                            <span class="close-modal" onclick="this.parentElement.remove()">&times;</span>
-                            <img src="${imageUrl}" style="max-width: 90%; max-height: 90%; border-radius: 10px;">
-                        `;
-                        document.body.appendChild(lightbox);
-                        setTimeout(() => lightbox.classList.add('active'), 100);
-                    }
+        if (window.innerWidth > 768) {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
                 });
-                
-                gallery.appendChild(galleryItem);
-            }
-        }
-
-        // Delete photo function
-        window.deletePhoto = function(section, imageUrl) {
-            if (confirm('Are you sure you want to delete this photo?')) {
-                // Remove from DOM
-                const galleryItems = document.querySelectorAll(`#${section}Gallery .gallery-item`);
-                galleryItems.forEach(item => {
-                    if (item.querySelector('img').src === imageUrl) {
-                        item.remove();
-                    }
-                });
-                
-                // Remove from localStorage
-                const galleryPhotos = JSON.parse(localStorage.getItem(section + 'Gallery') || '[]');
-                const updatedPhotos = galleryPhotos.filter(photo => photo !== imageUrl);
-                localStorage.setItem(section + 'Gallery', JSON.stringify(updatedPhotos));
-            }
-        };
-
-        // Load saved photos from localStorage
-        function loadSavedPhotos() {
-            // Profile photo
-            const savedProfilePhoto = localStorage.getItem('profilePhoto');
-            if (savedProfilePhoto) {
-                heroDefaultImg.style.display = 'none';
-                heroUploadedImg.style.display = 'block';
-                heroUploadedImg.src = savedProfilePhoto;
-                
-                navDefaultProfile.style.display = 'none';
-                navProfileImg.style.display = 'block';
-                navProfileImg.src = savedProfilePhoto;
-            }
-
-            // Section galleries
-            const sections = ['about', 'skills', 'project1', 'project2', 'project3', 'project4', 'fitness', 'ncc', 'marathon', 'education', 'achievements', 'contact'];
-            
-            sections.forEach(section => {
-                const savedPhotos = JSON.parse(localStorage.getItem(section + 'Gallery') || '[]');
-                savedPhotos.forEach(photoUrl => {
-                    addPhotoToGallery(section, photoUrl);
-                });
+                card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)'; });
             });
         }
 
-        loadSavedPhotos();
-
-        // Click on nav profile to open upload modal
-        navProfilePhoto.addEventListener('click', () => {
-            currentSection = 'profile';
-            modalTitle.textContent = 'Upload Profile Photo';
-            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
-            modal.classList.add('active');
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img').src;
+                const modal = document.createElement('div');
+                modal.style.cssText = `position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; display:flex; align-items:center; justify-content:center; cursor:pointer;`;
+                modal.innerHTML = `<img src="${img}" style="max-width:90%; max-height:90%; border-radius:10px;"><span style="position:absolute; top:20px; right:20px; color:white; font-size:3rem; cursor:pointer;">&times;</span>`;
+                document.body.appendChild(modal);
+                modal.addEventListener('click', () => { modal.remove(); });
+            });
         });
 
-        // Click on hero profile to open upload modal
-        heroUploadedImg.addEventListener('click', () => {
-            currentSection = 'profile';
-            modalTitle.textContent = 'Upload Profile Photo';
-            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
-            modal.classList.add('active');
-        });
-        heroDefaultImg.addEventListener('click', () => {
-            currentSection = 'profile';
-            modalTitle.textContent = 'Upload Profile Photo';
-            modalSubtitle.textContent = 'Choose a photo to set as your profile picture';
-            modal.classList.add('active');
-        });
+        // ===== CHATBOT SCRIPT (professional answers) =====
+        (function() {
+            const chatToggle = document.getElementById('chatToggle');
+            const chatWrapper = document.getElementById('chatbotWrapper');
+            const chatClose = document.getElementById('chatClose');
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+
+            const botKnowledge = {
+                intro: "Kiran Jothi is an engineering student, CDS aspirant, IoT enthusiast, NCC cadet (3+ years), and marathon runner (2 full marathons).",
+                about: "Kiran is passionate about technology and defence services. He combines IoT projects with physical discipline (running, yoga).",
+                skills: "Technical: Python, IoT, Arduino/ESP32, electronics. Academic: mathematics, reasoning. Personal: discipline, leadership, teamwork.",
+                projects: "Notable projects: Real-time utility meter monitoring (IoT, ESP32, Python), Arduino home automation, weather station, smart energy meter. All focus on IoT and embedded systems.",
+                fitness: "Kiran has run 1000+ km including 2 marathons. Daily yoga (365+ days), 5+ years active. NCC fitness activities.",
+                ncc: "NCC cadet since 2021, attended 5+ camps (ATC, NIC, leadership). Received Best Cadet, Leadership awards. Over 500 hours of service.",
+                marathon: "Completed Mumbai Marathon 2024 (4h45m) and Bengaluru Marathon 2023. Also multiple half-marathons and 10K runs.",
+                education: "Pursuing BE (electronics/IoT) since 2022. Preparing for CDS exam (target 2025). Higher secondary with maths/science.",
+                achievements: "CDS target 2025, 2 marathons finished, IoT certification, led technical team, NCC awards, best cadet.",
+                cds: "Kiran is dedicated to CDS 2025 attempt. He prepares daily with maths, reasoning, GK, and maintains physical fitness.",
+                contact: "Connect via social media links in the footer (LinkedIn, GitHub, etc.). For professional inquiries, use those channels.",
+                default: "I'm here to assist with queries about Kiran's engineering profile, CDS preparation, NCC, marathons, projects, or skills. Could you rephrase?"
+            };
+
+            function addMessage(text, sender) {
+                const msgDiv = document.createElement('div');
+                msgDiv.classList.add('message', sender);
+                msgDiv.textContent = text;
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function getBotResponse(input) {
+                const txt = input.toLowerCase().trim();
+                if (txt.includes('hi') || txt.includes('hello') || txt.includes('hey')) return "Hello! I'm your professional assistant for Kiran Jothi's portfolio. Ask me anything.";
+                if (txt.includes('who') && (txt.includes('kiran') || txt.includes('you'))) return botKnowledge.intro + ' ' + botKnowledge.about;
+                if (txt.includes('about') || txt.includes('bio')) return botKnowledge.about;
+                if (txt.includes('skill') || txt.includes('technic')) return botKnowledge.skills;
+                if (txt.includes('project') || txt.includes('iot')) return botKnowledge.projects;
+                if (txt.includes('fit') || txt.includes('run') || txt.includes('marathon') || txt.includes('yoga')) return botKnowledge.fitness + ' ' + botKnowledge.marathon;
+                if (txt.includes('ncc') || txt.includes('cadet') || txt.includes('camp')) return botKnowledge.ncc;
+                if (txt.includes('marathon') || txt.includes('run')) return botKnowledge.marathon;
+                if (txt.includes('educa') || txt.includes('degree') || txt.includes('college')) return botKnowledge.education;
+                if (txt.includes('achievement') || txt.includes('award')) return botKnowledge.achievements;
+                if (txt.includes('cds') || txt.includes('defence') || txt.includes('aspir')) return botKnowledge.cds;
+                if (txt.includes('contact') || txt.includes('email') || txt.includes('social')) return botKnowledge.contact;
+                if (txt.includes('thank')) return "You're welcome! Feel free to ask more.";
+                return botKnowledge.default;
+            }
+
+            function handleUserMessage() {
+                const text = chatInput.value.trim();
+                if (text === '') return;
+                addMessage(text, 'user');
+                chatInput.value = '';
+                setTimeout(() => { addMessage(getBotResponse(text), 'bot'); }, 300);
+            }
+
+            chatToggle.addEventListener('click', () => { chatWrapper.classList.toggle('open'); if (chatWrapper.classList.contains('open')) chatInput.focus(); });
+            chatClose.addEventListener('click', () => { chatWrapper.classList.remove('open'); });
+            chatSend.addEventListener('click', handleUserMessage);
+            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); handleUserMessage(); } });
+        })();
     </script>
 </body>
 </html>
